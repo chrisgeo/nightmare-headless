@@ -3,7 +3,8 @@ FROM node:slim
 MAINTAINER Chris George
 RUN apt-get update && \
     apt-get install -y \
-        xvfb x11-xkb-utils \
+        xvfb \
+        x11-xkb-utils \
         xfonts-100dpi \
         xfonts-75dpi \ 
         xfonts-scalable \
@@ -24,7 +25,7 @@ RUN apt-get update && \
         gcc-multilib \
         g++-multilib
 
-RUN useradd -ms /bin/bash  node
+RUN useradd -ms /bin/bash node -G sudo
 RUN chown -R node:node /home/node
 WORKDIR /home/node
 ENV HOME /home/node
