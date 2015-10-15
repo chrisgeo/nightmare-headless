@@ -23,9 +23,13 @@ RUN apt-get update && \
         libxss1 \
         libnss3-dev \
         gcc-multilib \
-        g++-multilib
+        g++-multilib \
+        --no-install-recommends \
+    && apt-get autoclean \
+    && apt-get clean \
+    && rm -rf /var/lib/api/lists/*
 
-RUN useradd -ms /bin/bash node -G sudo
+RUN useradd -ms /bin/bash node -G root
 RUN chown -R node:node /home/node
 WORKDIR /home/node
 ENV HOME /home/node
