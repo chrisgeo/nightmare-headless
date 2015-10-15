@@ -26,14 +26,15 @@ RUN apt-get update && \
         g++-multilib \
         xauth \
         git \
+        sudo \
         --no-install-recommends \
     && apt-get autoclean \
     && apt-get clean \
     && rm -rf /var/lib/api/lists/*
 
-RUN useradd -ms /bin/bash node -G root
+RUN useradd -ms /bin/bash node -G sudo
 RUN chown -R node:node /home/node
-USER root
+RUN echo %sudo ALL=NOPASSWD: ALL >> /etc/sudoers
 WORKDIR /home/node
 ENV HOME /home/node
 USER node
