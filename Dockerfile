@@ -24,6 +24,7 @@ RUN apt-get update && \
         libnss3-dev \
         gcc-multilib \
         g++-multilib \
+        xauth \
         --no-install-recommends \
     && apt-get autoclean \
     && apt-get clean \
