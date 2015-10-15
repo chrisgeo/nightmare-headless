@@ -25,6 +25,7 @@ RUN apt-get update && \
         gcc-multilib \
         g++-multilib \
         xauth \
+        git \
         --no-install-recommends \
     && apt-get autoclean \
     && apt-get clean \
@@ -32,6 +33,7 @@ RUN apt-get update && \
 
 RUN useradd -ms /bin/bash node -G root
 RUN chown -R node:node /home/node
+USER root
 WORKDIR /home/node
 ENV HOME /home/node
 USER node
